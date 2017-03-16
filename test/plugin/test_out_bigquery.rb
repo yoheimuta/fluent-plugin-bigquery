@@ -907,6 +907,7 @@ class BigQueryOutputTest < Test::Unit::TestCase
 
     driver.instance.start
     driver.instance.write(chunk)
+    assert driver.instance.log.logs.any?{|l| l =~ /do not retry insert/ }
     driver.instance.shutdown
   end
 
@@ -1043,6 +1044,9 @@ class BigQueryOutputTest < Test::Unit::TestCase
 
       driver.instance.start
       driver.instance.write(chunk)
+      if d["allow_retry_insert_errors"]
+        assert driver.instance.log.logs.any?{|l| l =~ /do not retry insert/ }
+      end
       driver.instance.shutdown
     end
   end

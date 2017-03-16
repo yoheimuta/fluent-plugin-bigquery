@@ -437,8 +437,11 @@ module Fluent
 
         if e.retryable?
           raise e # TODO: error class
-        elsif @secondary
-          flush_secondary(@secondary)
+        else
+          log.warn "do not retry insert", project_id: @project, dataset: @dataset, table: table_id, code: e.status_code, message: e.message, reason: e.reason
+          if @secondary
+            flush_secondary(@secondary)
+          end
         end
       end
     end
