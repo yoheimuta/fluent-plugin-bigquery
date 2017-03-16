@@ -783,6 +783,7 @@ class BigQueryOutputTest < Test::Unit::TestCase
       { "status_code" => 500  },
       { "status_code" => 502  },
       { "status_code" => 503  },
+      { "status_code" => 504  },
     ]
 
     data_input.each do |d|
