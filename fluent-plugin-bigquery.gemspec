@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'fluent/plugin/bigquery/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "fluent-plugin-bigquery"
+  spec.name          = "fluent-plugin-bigquery-patched-retry-502"
   spec.version       = Fluent::BigQueryPlugin::VERSION
   spec.authors       = ["Naoya Ito", "joker1007"]
   spec.email         = ["i.naoya@gmail.com", "kakyoin.hierophant@gmail.com"]
